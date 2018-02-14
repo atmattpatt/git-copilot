@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "fileutils"
+
 require "bundler/gem_tasks"
 require "cucumber/rake/task"
 require "rspec/core/rake_task"
@@ -11,4 +13,8 @@ RSpec::Core::RakeTask.new(:spec)
 
 RuboCop::RakeTask.new(:rubocop)
 
-task default: %i[features spec rubocop]
+task :clean do
+  FileUtils.rm_rf("coverage")
+end
+
+task default: %i[clean features spec rubocop]

@@ -3,7 +3,10 @@
 require "open3"
 require "simplecov"
 
-SimpleCov.start
+SimpleCov.start do
+  add_filter "/features/"
+  add_filter "/spec/"
+end
 
 def git_copilot_bin
   File.expand_path("../../../bin/git-copilot", __FILE__)
