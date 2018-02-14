@@ -93,8 +93,8 @@ To remove a user, run `git copilot user remove` with the username you want to re
 To list all users that Git Co-pilot knows about, run `git copilot user list`.
 
     $ git copilot user list
-    Jake Johnson <jake.johnson@example.com>
-    George Geoffries <george.geoffries@example.com>
+    jake   Jake Johnson <jake.johnson@example.com>
+    george George Geoffries <george.geoffries@example.com>
 
 ### Advanced Configuration
 
@@ -102,7 +102,7 @@ Git Co-pilot stores all of its data at `$HOME/.gitcopilot.yml`. The structure of
 
 ```yaml
 ---
-template: |
+template: |-
   # Write your commit message here
 
   %{coauthors}

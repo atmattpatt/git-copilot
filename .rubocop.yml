@@ -2,8 +2,23 @@
 AllCops:
   TargetRubyVersion: 2.4
 
+Metrics/LineLength:
+  Max: 120
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
 Style/Documentation:
+  Enabled: false
+
+Style/FormatStringToken:
   Enabled: false
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: comma
