@@ -1,6 +1,7 @@
 Feature: Commit message templates
 
   Scenario: Working solo
+    Given an existing configuration file
     When I run `git-copilot solo`
     Then a commit message template should exist with content
       """
@@ -9,7 +10,8 @@ Feature: Commit message templates
     And git should use the message template
 
   Scenario: Working with a single pair
-    Given an existing user "george"
+    Given an existing configuration file
+    And an existing user "george"
     When I run `git-copilot pair george`
     Then a commit message template should exist with content
       """
@@ -20,7 +22,8 @@ Feature: Commit message templates
     And git should use the message template
 
   Scenario: Working with multiple pair
-    Given an existing user "jake"
+    Given an existing configuration file
+    And an existing user "jake"
     And an existing user "george"
     When I run `git-copilot pair jake george`
     Then a commit message template should exist with content

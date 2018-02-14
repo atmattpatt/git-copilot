@@ -13,7 +13,8 @@ Feature: Managing users
     Then `git-copilot user list` should include "jake\s+Jake Johnson <jake.johnson@example.com>"
 
   Scenario: Remove a user
-    Given an existing user "bo"
+    Given an existing configuration file
+    And an existing user "bo"
     And an existing user "george"
     When I run `git-copilot user remove george`
     Then `git-copilot user list` should include "bo\s+Bo Smith <bo.smith@example.com>"

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "fileutils"
-
 Given("that no configuration exists") do
   FileUtils.rm([config_file_path, commit_message_template_path], force: true)
 end
