@@ -79,8 +79,8 @@ To add a pair, run `git copilot user add` with a "username" for the person you w
 If the user is on GitHub, you can import this information with the `--github` flag. If the details from GitHub are correct, you can just press "Enter" insted of re-entering them.
 
     $ git copilot user add --github jake
-    Git author name [Jake Johnson]:
-    Git author email [jake.johnson@example.com]:
+    Git author name: (Jake Johnson) # Just hit enter
+    Git author email: (jake.johnson@example.com) # Just hit enter
 
     Added Jake Johnson <jake.johnson@example.com> as "jake"!
 

@@ -1,7 +1,12 @@
 # frozen_string_literal: true
 
+require "git/copilot/configuration"
+require "git/copilot/cli/user"
+
 module Git::Copilot
   class CLI < Thor
+    include Configuration
+
     desc "init", "Initialize Git Co-pilot"
     option :force, aliases: [:f], type: :boolean, desc: "Overwrite existing configuration files"
     def init
@@ -16,19 +21,10 @@ module Git::Copilot
       File.write(commit_message_template_path, "# Write your commit message here")
     end
 
+    desc "user SUBCOMMAND", "Manage users that Git Co-pilot knows about"
+    subcommand "user", User
+
     private
-
-    def config_dir
-      File.expand_path(ENV["HOME"])
-    end
-
-    def config_file_path
-      File.join(config_dir, ".gitcopilot.yml")
-    end
-
-    def commit_message_template_path
-      File.join(config_dir, ".gitcopilot-commit-template")
-    end
 
     def empty_configuration
       YAML.dump(
