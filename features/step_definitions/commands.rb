@@ -24,8 +24,7 @@ When(/I run `git-copilot user add( --github)?( .*)`/) do |*args|
 end
 
 When(/I run `git-copilot user remove( .*)`/) do |*args|
-  run_git_copilot("user", "remove", *args.compact.map(&:strip), stdin_data: "#{@name_to_add}\n#{@email_to_add}\n")
-  pending
+  run_git_copilot("user", "remove", *args.compact.map(&:strip), stdin_data: "y\n")
 end
 
 When("I run `git-copilot user list`") do

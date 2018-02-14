@@ -15,6 +15,15 @@ class Git::Copilot::CLI < Thor
       say %(Added #{user.to_committer} as "#{user.username}")
     end
 
+    desc "remove USERNAME", "Remove a user identified by USERNAME"
+    def remove(username)
+      user = users.fetch(username) do
+        return say_status "WARNING", "Unknown user #{username}", :yellow
+      end
+
+      users.delete(username) && commit_config if yes?("Remove #{user.to_committer}?")
+    end
+
     desc "list", "List users that Git Co-pilot knows about"
     def list
       return say "No users found" if users.empty?
