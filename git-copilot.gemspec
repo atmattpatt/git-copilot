@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["matthew.s.patterson@gmail.com"]
 
   spec.summary       = "Easily populate Git commit messages when pairing"
-  spec.homepage      = "https://github/atmattpatt/git-copilot"
+  spec.homepage      = "https://github.com/atmattpatt/git-copilot"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
