@@ -33,7 +33,7 @@ When("I run `git-copilot user list`") do
 end
 
 When("I run `git-copilot solo`") do
-  pending
+  run_git_copilot("solo")
 end
 
 When(/I run `git-copilot pair(.*)`/) do |*_args|

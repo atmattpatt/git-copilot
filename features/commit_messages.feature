@@ -6,6 +6,7 @@ Feature: Commit message templates
       """
       # Write your commit message here
       """
+    And git should use the message template
 
   Scenario: Working with a single pair
     Given an existing user "george"
@@ -16,6 +17,7 @@ Feature: Commit message templates
 
       Co-authored-by: George Smith <george.smith@example.com>
       """
+    And git should use the message template
 
   Scenario: Working with multiple pair
     Given an existing user "jake"
@@ -28,3 +30,4 @@ Feature: Commit message templates
       Co-authored-by: Jake Smith <jake.smith@example.com>
       Co-authored-by: George Smith <george.smith@example.com>
       """
+    And git should use the message template
