@@ -31,3 +31,15 @@ Feature: Commit message templates
       Co-authored-by: George Smith <george.smith@example.com>
       """
     And git should use the message template
+
+  Scenario: Adding an invalid user
+    Given an empty user set
+    And an existing user "george"
+    When I run `git-copilot pair jake george`
+    Then a commit message template should exist with content
+      """
+      # Write your commit message here
+
+      Co-authored-by: George Smith <george.smith@example.com>
+      """
+    And the output should say "Unknown user jake"

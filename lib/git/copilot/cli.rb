@@ -26,6 +26,19 @@ module Git::Copilot
       set_git_commit_template
     end
 
+    desc "pair USERNAME...", "Prepare a commit message template for pairing"
+    def pair(*usernames)
+      authors = usernames.map do |username|
+        users.fetch(username) do
+          say_status "WARNING", "Unknown user #{username}", :yellow
+          next
+        end
+      end.compact
+
+      write_template(authors: authors)
+      set_git_commit_template
+    end
+
     desc "user SUBCOMMAND", "Manage users that Git Co-pilot knows about"
     subcommand "user", User
 

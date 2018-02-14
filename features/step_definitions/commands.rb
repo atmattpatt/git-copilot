@@ -36,8 +36,8 @@ When("I run `git-copilot solo`") do
   run_git_copilot("solo")
 end
 
-When(/I run `git-copilot pair(.*)`/) do |*_args|
-  pending
+When(/I run `git-copilot pair(.*)`/) do |usernames|
+  run_git_copilot("pair", *usernames.split(" ").compact)
 end
 
 Then("the output should say {string}") do |expected|

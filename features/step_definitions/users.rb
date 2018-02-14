@@ -6,7 +6,6 @@ Given("an empty user set") do
 end
 
 Given("an existing user {string}") do |username|
-  step "an empty user set"
   step %(I want to add #{username.capitalize} Smith <#{username}.smith@example.com> as "#{username}")
   step "I run `git-copilot user add #{username}`"
 end
