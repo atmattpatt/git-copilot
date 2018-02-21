@@ -119,6 +119,11 @@ current_pairs:
 
 ## Development
 
+1. Clone this repo
+1. Run `bin/setup` to install dependencies
+1. Run `bundle exec rake` to run all tests
+1. You can run `bin/console` to open an IRB console with Git Co-pilot already loaded
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/atmattpatt/git-copilot.
