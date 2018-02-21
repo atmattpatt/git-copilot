@@ -15,7 +15,7 @@ def run_git_copilot(*args, **opts)
 end
 
 When(/I run `git co-pilot init( --force)?`/) do |*args|
-  run_git_copilot("init", *args.compact.map(&:strip))
+  run_git_copilot("init", *args.compact.map(&:strip), stdin_data: "y\n")
 end
 
 When(/I run `git-copilot user add( --github)?( .*)`/) do |*args|

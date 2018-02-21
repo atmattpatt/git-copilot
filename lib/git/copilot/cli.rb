@@ -17,6 +17,10 @@ module Git::Copilot
       say "Writing configuration file to #{config_file_path}"
       File.write(config_file_path, empty_configuration)
 
+      if yes?("Set up a global git alias? (This will allow you to run `git copilot`)")
+        system("git config --global alias.copilot '\!git-copilot'")
+      end
+
       solo
     end
 

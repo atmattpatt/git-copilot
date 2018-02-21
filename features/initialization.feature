@@ -17,6 +17,7 @@ Feature: Initialization
       """
       # Write your commit message here
       """
+    And a global git "copilot" alias should be configured
 
   Scenario: Initializing git-copilot when a configuration file already exists
     Given an existing configuration file
