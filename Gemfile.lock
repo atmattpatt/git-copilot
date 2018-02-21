@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    git-copilot (0.1.0)
+    git-copilot (0.2.0)
       thor (~> 0.20)
 
 GEM
