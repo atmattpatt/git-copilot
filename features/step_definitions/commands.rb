@@ -39,6 +39,10 @@ When(/I run `git-copilot pair(.*)`/) do |usernames|
   run_git_copilot("pair", *usernames.split(" ").compact)
 end
 
+When("I run `git-copilot status`") do
+  run_git_copilot("status")
+end
+
 Then("the output should say {string}") do |expected|
   expect(@output).to match(Regexp.new(expected))
 end

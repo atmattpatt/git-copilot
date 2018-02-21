@@ -22,8 +22,11 @@ module Git::Copilot
 
     desc "solo", "Prepare a commit message template for solo work"
     def solo
+      clear_pairs
+      commit_config
       write_template
       set_git_commit_template
+      status
     end
 
     desc "pair USERNAME...", "Prepare a commit message template for pairing"
@@ -35,8 +38,29 @@ module Git::Copilot
         end
       end.compact
 
-      write_template(authors: authors)
+      if authors.empty?
+        return say_status "ERROR", "No users to pair with. " \
+          "Did you mean to run git-copilot solo?", :red
+      end
+
+      self.current_pairs = authors
+      commit_config
+      write_template
       set_git_commit_template
+
+      status
+    end
+
+    desc "status", "Show the current pairs, if any"
+    def status
+      if current_pairs.empty?
+        say "Now working solo", :green
+      else
+        say "Now working with #{pluralize_pairs(current_pairs.length)}:"
+        current_pairs.each do |author|
+          say format("%{name} <%{email}>", name: author.name, email: author.email), :green
+        end
+      end
     end
 
     desc "user SUBCOMMAND", "Manage users that Git Co-pilot knows about"
@@ -44,8 +68,8 @@ module Git::Copilot
 
     private
 
-    def write_template(authors: [])
-      File.write(commit_message_template_path, template(authors: authors))
+    def write_template
+      File.write(commit_message_template_path, template(authors: current_pairs))
     end
 
     def set_git_commit_template
@@ -65,6 +89,10 @@ module Git::Copilot
         "template" => "# Write your commit message here\n\n%{coauthors}",
         "users" => {},
       )
+    end
+
+    def pluralize_pairs(number)
+      number == 1 ? "1 pair" : "#{number} pairs"
     end
   end
 end

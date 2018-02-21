@@ -39,6 +39,7 @@ module Git::Copilot::Configuration
       "users" => users.each_with_object({}) do |(username, user), memo|
         memo[username.to_s] = user.to_h
       end,
+      "current_pairs" => current_pairs.map(&:username),
     }
   end
 
@@ -50,6 +51,20 @@ module Git::Copilot::Configuration
     @users ||= configuration.fetch("users", {}).each_with_object({}) do |(username, data), memo|
       memo[username] = User.new(username, data["name"], data["email"])
     end
+  end
+
+  def current_pairs
+    @current_pairs ||= configuration.fetch("current_pairs", []).map do |username|
+      users.fetch(username)
+    end
+  end
+
+  def clear_pairs
+    self.current_pairs = []
+  end
+
+  def current_pairs=(usernames)
+    @current_pairs = usernames.to_a.flatten
   end
 
   def add_user(username, name, email)

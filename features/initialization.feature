@@ -11,6 +11,7 @@ Feature: Initialization
 
         %{coauthors}
       users: {}
+      current_pairs: []
       """
     And a commit message template should exist with content
       """
@@ -33,6 +34,7 @@ Feature: Initialization
 
         %{coauthors}
       users: {}
+      current_pairs: []
       """
     And a commit message template should exist with content
       """

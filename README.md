@@ -113,6 +113,8 @@ users:
   george:
     name: George Geoffries
     email: george.geoffries@example.com
+current_pairs:
+- george
 ```
 
 ## Development
